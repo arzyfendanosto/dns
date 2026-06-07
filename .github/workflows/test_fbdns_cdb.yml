@@ -12,8 +12,9 @@ jobs:
           submodules: recursive
       - uses: actions/setup-go@v5
         with:
+          cache: 'true'
           go-version: 1.26
       - name: install rocksdb
         run: sudo bash .github/scripts/install_rocks_head.sh
       - name : Perform perftest
-        run: sudo bash .github/scripts/test_fbdns_cdb.sh
+        run: sudo go test ./.github/scripts/...
